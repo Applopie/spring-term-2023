@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    int a = 4, k = 0;
+    int a = 3, k = 0;
     while (a != 0) {
         cin >> a;
         if (abs(a) % 2 == 0) {

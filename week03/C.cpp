@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifndef N
-#define N 3
+#define N 1
 #endif
 
 void swap(int& lha, int& rha) {
@@ -19,8 +19,10 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> a[i];
     }
-    for (int i = 1; i < N; i++) {
-        swap(a[0], a[i]);
+    for (int j = 0; j < k; j++) {
+        for (int i = 1; i < N; i++) {
+            swap(a[0], a[i]);
+        }
     }
     for (int i = 0; i < N; i++) {
         cout << a[i] << ' ';

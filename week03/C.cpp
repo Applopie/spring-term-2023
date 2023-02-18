@@ -14,7 +14,8 @@ void swap(int& lha, int& rha) {
 }
 
 int main() {
-    int a[N];
+    int k = 0, a[N];
+    cin >> k;
     for (int i = 0; i < N; i++) {
         cin >> a[i];
     }

@@ -13,7 +13,7 @@ void swap(int& lha, int& rha) {
 }
 
 int main() {
-    int a[N] = {1, 2, 3};
+    int a[N];
     for (int i = 0; i < N; i++) {
         cin >> a[i];
     }

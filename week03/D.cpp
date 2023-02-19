@@ -8,12 +8,6 @@ using namespace std;
 #define N 5
 #endif
 
-void swap(int& lha, int& rha) {
-    int h = lha;
-    lha = rha;
-    rha = h;
-}
-
 bool comp(int& a, int& b) {
     return a >= b;
 }

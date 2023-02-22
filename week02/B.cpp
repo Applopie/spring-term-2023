@@ -8,9 +8,9 @@ int main() {
     while (a != 0) {
         cin >> a;
         if (abs(a) % 2 == 0) {
-            k = k++;
+            k++;
         }
     }
-    cout << k << endl;
+    cout << k - 1 << endl;
     return 0;
 }

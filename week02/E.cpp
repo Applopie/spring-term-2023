@@ -13,7 +13,7 @@ int fibonacchi(int i) {
 }
 
 int main() {
-    int a = 6;
+    int a = 0;
     cin >> a;
     cout << fibonacchi(a) << endl;
     return 0;

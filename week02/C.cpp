@@ -3,15 +3,15 @@
 
 using namespace std;
 
-bool twotwo(int c) {
+string_view_literals twotwo(int c) {
     while (c % 2 == 0) {
         c = c/2;
     }
     if (c == 1) {
-        return true;
+        return "YES";
     }
     else {
-        return false;
+        return "NO";
     }
 }
 

@@ -2,9 +2,10 @@
 #include <chrono>
 #include <random>
 #include <cmath>
+#include <algorithm>
 
 #ifndef N
-#define N 500000
+#define N 1000000
 #endif
 
 using namespace std;

@@ -4,7 +4,7 @@
 #include <cmath>
 
 #ifndef N
-#define N 5100
+#define N 70000
 #endif
 
 using namespace std;

@@ -19,29 +19,27 @@ int func(int (array)[N], int a) {
     return -1;
 }
 
-int funcbin(int (&array)[N], int l, int r, int a) {
-    int it = (l + r) / 2.;
-    if (array[l] == a) {
-        return array[l];
-    } 
-    else if (array[r] == a) {
-        return array[r];
-    } 
-    else if (array[l + 1] == array[r]){
-        return -1;
-    } 
-    else if (array[r] < a) {
-        return -1;
+int funcbin(int array[N], int a) {
+    int l = 0, r = N-1;
+    if (array[0] == a) {
+        return 0;
     }
-    else if (array[l] > a) {
-        return -1;
-    } 
-    else if (array[it] < a) {
-        return funcbin(array, it, r, a);
+    if (array[N-1] == a) {
+        return N-1;
     }
-     else if (array[it] > a) {
-        return  funcbin(array, l, it, a);
-    }
+    while (l < r - 1) {
+        it = (l + r)/2
+        if (array[it] == a) {
+            return it;
+        } 
+        else if (array[it]  > a) {
+            r = it;
+        } 
+        else {
+            l = it;
+        }
+    }      
+    return -1;
 }
 
 int main() {

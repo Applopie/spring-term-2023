@@ -11,5 +11,5 @@ plt.scatter(x, y, s=20, c='b')
 plt.plot(x,y)
 
 plt.xlabel('Array size')
-plt.ylabel('Time, microseconds')
+plt.ylabel('Time, mcs')
 plt.show()

@@ -5,7 +5,7 @@
 #include <algorithm>
 
 #ifndef N
-#define N 300000
+#define N 100
 #endif
 
 using namespace std;

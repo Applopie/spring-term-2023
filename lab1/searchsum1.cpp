@@ -49,14 +49,14 @@ int main() {
         int b = a[10]  + a[35];
         //int b = -100;
         for (int j = 100; j > 0; j--) {
-        auto begin = std::chrono::steady_clock::now();
+            auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 100000; cnt != 0; --cnt) 
-        funcbin(a, b);
+            funcbin(a, b);
         auto end = std::chrono::steady_clock::now();
         auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(end-begin);
         cout << "\n\n";
         cout << time_span.count() << endl;
-        t ++;
+        t++;
         tt = tt + time_span.count();
         }
         cout << tt/t << endl;

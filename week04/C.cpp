@@ -17,7 +17,7 @@ void swapp(int (&arr)[], int n, int i) {
 }
 
 void hs(int (&arr)[N], int in, int sz) {
-    if (in = 0) {
+    if (in == 0) {
         return;
     }
     for (int i = in; i >= 0; i--) {

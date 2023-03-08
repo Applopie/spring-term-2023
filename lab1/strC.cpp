@@ -27,16 +27,18 @@ int search(int array[], int n, int sr) {
 }
 
 void swap(int &a, int &b) {
-    int t = b;
+    int tmp = b;
     b = a;
-    a = t;
+    a = tmp;
     return;
 }
 
-void strategy_A(int array[], int n, int sr){
+void strategy_C(int array[], int darr[], int n, int sr){
     int i = search(array, n, sr);
-    if (i != -1 and i != 0) {
-        swap(array[i], array[0]);
+    darr[i + 1]++;
+    if (darr[i + 1] > darr[i]) {
+        swap(array[i], array[i - 1]);
+        swap(darr[i + 1], darr[i]);
     }
 
 }
@@ -51,14 +53,15 @@ void randomize(int array[], int n){
 
 int main() {
     int key = 0;
-    int array[N];
 
     std::ofstream out;
-    out.open("strategy_A.csv");
+    out.open("strategy_C.csv");
     out << "N,A,B" << std::endl;
     
     
     for(unsigned counter = 100; counter < N; counter += 5000) {
+        int array[counter];
+        int darr[counter+1] = {0};
         randomize(array, counter);
         unsigned seed2 = counter*7;
         std::default_random_engine rng(seed2);
@@ -66,7 +69,7 @@ int main() {
         auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
             key = dstr2(rng);
-            strategy_A(array, counter, key);
+            strategy_C(array, darr, counter, key);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span_A_r = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); 
@@ -83,7 +86,7 @@ int main() {
                     }
                 }
             }
-            strategy_A(array, counter, key);
+            strategy_C(array, darr, counter, key);
         }
         auto end_n = std::chrono::steady_clock::now();
         auto time_span_A_n = std::chrono::duration_cast<std::chrono::microseconds>(end_n - begin_n); 

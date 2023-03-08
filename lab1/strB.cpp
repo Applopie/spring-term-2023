@@ -33,10 +33,10 @@ void swap(int &a, int &b) {
     return;
 }
 
-void strategy_A(int array[], int n, int sr){
+void strategy_B(int array[], int n, int sr){
     int i = search(array, n, sr);
     if (i != -1 and i != 0) {
-        swap(array[i], array[0]);
+        swap(array[i], array[i - 1]);
     }
 
 }
@@ -54,7 +54,7 @@ int main() {
     int array[N];
 
     std::ofstream out;
-    out.open("strategy_A.csv");
+    out.open("strategy_B.csv");
     out << "N,A,B" << std::endl;
     
     
@@ -66,7 +66,7 @@ int main() {
         auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
             key = dstr2(rng);
-            strategy_A(array, counter, key);
+            strategy_B(array, counter, key);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span_A_r = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); 
@@ -83,7 +83,7 @@ int main() {
                     }
                 }
             }
-            strategy_A(array, counter, key);
+            strategy_B(array, counter, key);
         }
         auto end_n = std::chrono::steady_clock::now();
         auto time_span_A_n = std::chrono::duration_cast<std::chrono::microseconds>(end_n - begin_n); 

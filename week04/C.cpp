@@ -16,7 +16,7 @@ void swapp(int (&arr)[], int n, int i) {
     }
 }
 
-void hs(int (&arr)[N], int in, int sz) {
+void cheops_sort(int (&arr)[N], int in, int sz) {
     if (in == 0) {
         return;
     }
@@ -32,7 +32,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> a[i];
     }
-    hs(a, N - 1, N);
+    cheops_sort(a, N - 1, N);
     for (int i = 0; i < N; i++) {
         cout << a[i] << ' ';
     }

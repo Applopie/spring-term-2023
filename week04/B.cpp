@@ -19,7 +19,7 @@ int pr(int (&array)[N], int lb, int rb) {
     swap(array[tr], array[rb]);
     return tr;
 }
-void qs(int (&array)[N], int start, int end) {
+void qsort(int (&array)[N], int start, int end) {
     if (start >= end) {
         return;
     }
@@ -32,7 +32,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> a[i];
     }
-    qs(a, 0, N-1);
+    qsort(a, 0, N-1);
     for (int i = 0; i < N; i++) {
         cout << a[i] << ' ';
     }

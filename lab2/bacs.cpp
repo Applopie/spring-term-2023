@@ -1,43 +1,71 @@
-int main() {
-    int key = 0;
-    int array[N];
+#include <iostream>
+#include <fstream>
+#include <chrono>
+#include <random>
 
-    std::ofstream out;
-    out.open("hth.csv");
-    out << "N,A" << std::endl;
-    
-    
-    for(unsigned counter = 100; counter < N; counter += 5000) {
-        randomize(array, counter);
-        unsigned seed2 = counter*7;
-        std::default_random_engine rng(seed2);
-        std::uniform_int_distribution<unsigned> dstr2(0, counter+1);  
-        auto begin = std::chrono::steady_clock::now();
-        for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
-            key = dstr2(rng);
-            strategy_A(array, counter, key);
-        }
-        auto end = std::chrono::steady_clock::now();
-        auto time_span_A_r = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); 
-        
+using namespace std;
 
-        if (out.is_open()) {
-            out << counter << ',' << (float) time_span_A_r.count()/10000 << std::endl;
+#ifndef N
+#define N 8
+#endif
+
+void basic(int (&arr)[], int counter, int step) {
+    for (int i = 0; i < counter - step; i++) {
+        if (arr[i] > arr[i + step]) {
+            swap(arr[i], arr[i + step]);
         }
     }
-    out.close();
-    return 0;
 }
 
+void shell(int (&arr)[], int counter) {
+    int a = counter;
+    while (a >= 1) {
+        basic(arr, counter, a);
+        a = a/2;
+    }
+}
+
+void shell2(int (&arr)[], int counter, int (&a)[], int hpcounter) {
+    for (int i = 0; i < hpcounter; i++) {
+        basic(arr, counter, a[i]);
+    }
+    basic(arr, counter, 1);
+}
+
+int fibonacchi(int i) {
+    if (i == 0 or i == 1) {
+        return 1;
+    }
+    else {
+        return fibonacchi(i - 1) + fibonacchi(i - 2);
+    }
+}
 
 int main() {
-    int a[N];
+    int arr[N];
+    int t = 1;
+        while (pow(2, t) - 1 < N) {
+            t += 1;
+        }
+        int a[t - 1];
+        for (int i = t - 1; i > 0; i--) {
+            a[t - 1 - i] = pow(2, i) - 1;
+        }
+        int h = 0; 
+        while (fibonacchi(h) < N) {
+            h++;
+        }
+        int b[h];
+        for (int i = h; i >= 0; i--) {
+            b[i] = fibonacchi(i);
+        }
     for (int i = 0; i < N; i++) {
-        cin >> a[i];
+        cin >> arr[i];
     }
-    sorting(a);
+    //shell2(arr, N, a, t - 1);
+    basic(arr, N, 1);
     for (int i = 0; i < N; i++) {
-        cout << a[i] << ' ';
+        cout << arr[i] << ' ';
     }
     return 0;
 }

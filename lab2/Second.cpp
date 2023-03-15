@@ -13,20 +13,25 @@ unsigned seed = 1000-7;
 std::default_random_engine rng(seed);
 std::uniform_int_distribution<unsigned> dstr(0, N-1);
 
-void basic(int (&arr)[], int counter, int step) {
+int basic(int (&arr)[], int counter, int step) {
+    int t = 0;
     for (int i = 0; i < counter - step; i++) {
         if (arr[i] > arr[i + step]) {
             swap(arr[i], arr[i + step]);
+            t++;
         }
     }
+    return t;
 }
 
-void sorting(int (&arr)[], int counter) {
+int sorting(int (&arr)[], int counter) {
+    int temp = 0;
     int n = int(counter/1.247);
     while (n > 0) {
-        basic(arr, counter, n);
+        temp = temp + basic(arr, counter, n);
         n = int(n/1.2479);
     }
+    return t;
 }
 
 void randomize(int array[], int n){
@@ -39,10 +44,11 @@ void randomize(int array[], int n){
 int main() {
 
     std::ofstream out;
-    out.open("hth.csv");
-    out << "N,A" << std::endl;
-    
+    out.open("htht2.csv");
+    out << "N,A,B" << std::endl;
+
     for(unsigned counter = 100; counter < N; counter += 5000) {
+        int te = 0;
         int array[counter];
         randomize(array, counter);
         unsigned seed2 = counter*7;
@@ -50,14 +56,14 @@ int main() {
         std::uniform_int_distribution<unsigned> dstr2(0, counter+1);  
         auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
-            sorting(array, counter);
+            te = sorting(array, counter);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span_A_r = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); 
         
 
         if (out.is_open()) {
-            out << counter << ',' << (float) time_span_A_r.count()/10000 << std::endl;
+            out << counter << ',' << (float) time_span_A_r.count()/10000 <<  ';' << te << std::endl;
         }
     }
     out.close();

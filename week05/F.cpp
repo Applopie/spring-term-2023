@@ -28,6 +28,7 @@ int main()
 {
     int *a = new int[10];
     const char *ptr_0;
-    resize(ptr_0, 10, 6);
+    resize(ptr_0, 10, 15);
     delete[] a;
+    return 0;
 }

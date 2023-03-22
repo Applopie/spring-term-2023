@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     double a = 0;
     double *ptr = &a;
     cout << &a << ' ' << ptr << endl;

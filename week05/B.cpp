@@ -29,5 +29,6 @@ int main()
     {
         cout << ptr[i] << ' ';
     }
+    delete[] ptr;
     return 0;
 }

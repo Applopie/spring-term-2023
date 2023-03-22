@@ -91,31 +91,6 @@ int main()
     unsigned a10[50] = {4, 12, 3, 56, 15, 4, 6, 6, 17, 10, 45, 45, 12, 12, 77, 778, 90, 12, 13, 14, 65, 66, 64, 67, 63, 0, 0, 0, 1,
                         2, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 37, 87, 21, 10, 5, 4, 3, 8, 6, 12, 22, 33, 44, 22};
 
-    unsigned answa1[5] = {0, 10, 11, 3, 5};
-
-    unsigned answa2[10] = {1, 22, 101, 3, 3, 11, 7, 11, 19, 109};
-
-    unsigned answa3[15] = {0, 3, 3, 3, 3, 3, 6, 6, 5, 7, 7, 0, 3, 101, 5};
-
-    unsigned answa4[20] = {10, 12, 2, 4, 64, 70, 76, 64, 2, 13, 5, 89, 98, 67, 4, 44, 34, 12, 65, 32};
-
-    unsigned answa5[25] = {15, 45, 33, 3, 44, 1, 15, 67, 39, 97, 3, 101, 54, 43, 23, 45, 967, 4, 193, 65, 32, 5, 67, 4, 8, 99, 44};
-
-    unsigned answa6[30] = {15, 69, 76, 53, 50, 0, 7, 4, 2, 1, 334, 212, 234, 211, 400, 9, 6, 4, 3, 1, 90, 87, 45, 23, 11, 890,
-                           567, 653, 234, 120};
-
-    unsigned answa7[35] = {67, 5, 345, 12, 21, 8, 54, 23, 56, 0, 456, 77, 67, 90, 965, 1, 23, 20, 245, 7, 15, 56, 87, 32, 78, 101,
-                           342, 21, 15, 870, 64, 1, 1, 1, 56};
-
-    unsigned answa8[40] = {67, 5, 345, 12, 21, 8, 54, 23, 56, 0, 456, 77, 67, 90, 965, 1, 23, 20, 245, 7, 15, 56, 87, 32, 78, 101,
-                           342, 21, 15, 870, 64, 1, 1, 1, 56, 396, 1025, 65, 13, 4};
-
-    unsigned answa9[45] = {4, 12, 3, 56, 15, 4, 6, 54, 17, 10, 45, 45, 12, 12, 77, 78, 90, 12, 13, 1, 65, 66, 64, 67, 63, 0, 0, 0, 1,
-                           2, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 3, 87, 21, 10, 5, 4, 3, 8, 6};
-
-    unsigned answa10[50] = {4, 12, 3, 56, 15, 4, 6, 6, 17, 10, 45, 45, 12, 12, 77, 778, 90, 12, 13, 14, 65, 66, 64, 67, 63, 0, 0, 0, 1,
-                            2, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 37, 87, 21, 10, 5, 4, 3, 8, 6, 12, 22, 33, 44, 22};
-
     forwardstep(a1, 0, 4);
     forwardstep(a2, 0, 9);
     forwardstep(a3, 0, 14);
@@ -128,86 +103,105 @@ int main()
     forwardstep(a10, 0, 49);
 
     int marker = 0;
-    if (std::equal(array1, array1 + 10, ans_array1))
+    if (equal(a1, array1 + 5, ansa1))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array2, array2 + 50, ans_array2))
+    if (equal(a2, a2 + 10, ansa2))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array3, array3 + 5, ans_array3))
+    if (equal(a3, a3 + 15, ansa3))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array4, array4 + 25, ans_array4))
+    if (equal(a4, a4 + 20, ansa4))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array5, array5 + 33, ans_array5))
+    if (equal(a5, a5 + 25, ansa5))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array6, array6 + 42, ans_array6))
+    if (equal(a6, a6 + 30, ansa6))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array7, array7 + 17, ans_array7))
+    if (equal(a7, a7 + 35, ansa7))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array8, array8 + 8, ans_array8))
+    if (equal(a8, a8 + 40, ansa8))
     {
         marker++;
     }
-    else
+    if (equal(a9, a9 + 45, ansa9))
     {
-        marker = 0;
+        marker++;
+    }
+    if (equal(a10, a10 + 50, ansa10))
+    {
+        marker++;
     }
 
-    if (marker == 8)
+    if (marker == 10)
     {
-        cout << "function works correctly";
+        cout << "working";
     }
     else
     {
-        cout << "something wrong " << marker;
+        cout << "umm not" << marker;
     }
+
+    unsigned a1[5] = {10, 11, 0, 5, 3};
+
+    unsigned a2[10] = {22, 101, 3, 3, 11, 1, 7, 19, 109, 11};
+
+    unsigned a3[15] = {3, 3, 3, 3, 3, 6, 6, 5, 7, 7, 0, 0, 101, 3, 5};
+
+    unsigned a4[20] = {10, 12, 2, 4, 64, 70, 76, 64, 2, 13, 5, 89, 98, 67, 4, 44, 34, 12, 65, 32};
+
+    unsigned a5[25] = {15, 45, 33, 3, 44, 1, 15, 67, 39, 97, 3, 101, 54, 43, 23, 45, 967, 4, 193, 65, 32, 5, 67, 4, 8, 99, 44};
+
+    unsigned a6[30] = {15, 69, 76, 53, 50, 0, 7, 4, 2, 1, 334, 212, 234, 211, 400, 9, 6, 4, 3, 1, 90, 87, 45, 23, 11, 890,
+                       567, 653, 234, 120};
+
+    unsigned a7[35] = {67, 5, 345, 12, 21, 8, 54, 23, 56, 0, 456, 77, 67, 90, 965, 1, 23, 20, 245, 7, 15, 56, 87, 32, 78, 101,
+                       342, 21, 15, 870, 64, 1, 1, 1, 56};
+
+    unsigned a8[40] = {67, 5, 345, 12, 21, 8, 54, 23, 56, 0, 456, 77, 67, 90, 965, 1, 23, 20, 245, 7, 15, 56, 87, 32, 78, 101,
+                       342, 21, 15, 870, 64, 1, 1, 1, 56, 396, 1025, 65, 13, 4};
+
+    unsigned a9[45] = {4, 12, 3, 56, 15, 4, 6, 54, 17, 10, 45, 45, 12, 12, 77, 78, 90, 12, 13, 1, 65, 66, 64, 67, 63, 0, 0, 0, 1,
+                       2, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 3, 87, 21, 10, 5, 4, 3, 8, 6};
+
+    unsigned a10[50] = {4, 12, 3, 56, 15, 4, 6, 6, 17, 10, 45, 45, 12, 12, 77, 778, 90, 12, 13, 14, 65, 66, 64, 67, 63, 0, 0, 0, 1,
+                        2, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 37, 87, 21, 10, 5, 4, 3, 8, 6, 12, 22, 33, 44, 22};
+
+    unsigned answa1[5] = {0, 10, 11, 3, 5};
+
+    unsigned answa2[10] = {1, 22, 101, 3, 3, 11, 7, 11, 19, 109};
+
+    unsigned answa3[15] = {0, 3, 3, 3, 3, 3, 6, 6, 5, 7, 7, 0, 3, 101, 5};
+
+    unsigned answa4[20] = {2, 10, 12, 2, 4, 64, 70, 76, 64, 4, 13, 5, 89, 98, 67, 12, 44, 34, 32, 65};
+
+    unsigned answa5[25] = {1, 15, 45, 33, 3, 44, 3, 15, 67, 39, 97, 4, 101, 54, 43, 23, 45, 967, 4, 193, 65, 32, 5, 67, 8, 44, 99};
+
+    unsigned answa6[30] = {0, 15, 69, 76, 53, 50, 1, 7, 4, 2, 1, 334, 212, 234, 211, 400, 9, 6, 4, 3, 11, 90, 87, 45, 23, 120, 890,
+                           567, 653, 234};
+
+    unsigned answa7[35] = {0, 67, 5, 345, 12, 21, 8, 54, 23, 56, 1, 456, 77, 67, 90, 965, 1, 23, 20, 245, 7, 15, 56, 87, 32, 78, 101,
+                           342, 21, 15, 870, 64, 1, 1, 56};
+
+    unsigned answa8[40] = {0, 67, 5, 345, 12, 21, 8, 54, 23, 56, 1, 456, 77, 67, 90, 965, 1, 23, 20, 245, 7, 15, 56, 87, 32, 78, 101,
+                           342, 21, 15, 870, 64, 1, 1, 4, 56, 396, 1025, 65, 13};
+
+    unsigned answa9[45] = {0, 4, 12, 3, 56, 15, 4, 6, 54, 17, 10, 45, 45, 12, 12, 77, 78, 90, 12, 13, 1, 65, 66, 64, 67, 63, 0, 0, 1,
+                           2, 3, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 3, 87, 21, 10, 5, 4, 6, 8};
+
+    unsigned answa10[50] = {0, 4, 12, 3, 56, 15, 4, 6, 6, 17, 10, 45, 45, 12, 12, 77, 778, 90, 12, 13, 14, 65, 66, 64, 67, 63, 0, 0, 1,
+                            2, 3, 11, 76, 72, 23, 43, 84, 54, 56, 90, 98, 65, 33, 37, 87, 21, 10, 5, 4, 6, 8, 12, 22, 22, 33, 44};
 
     backwardstep(a1, 0, 4);
     backwardstep(a2, 0, 9);
@@ -220,86 +214,55 @@ int main()
     backwardstep(a9, 0, 44);
     backwardstep(a10, 0, 49);
 
-    int marker = 0;
-    if (std::equal(array1, array1 + 10, ans_array1))
+    marker = 0;
+    if (equal(a1, array1 + 5, answa1))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array2, array2 + 50, ans_array2))
+    if (equal(a2, a2 + 10, answa2))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array3, array3 + 5, ans_array3))
+    if (equal(a3, a3 + 15, answa3))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array4, array4 + 25, ans_array4))
+    if (equal(a4, a4 + 20, answa4))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array5, array5 + 33, ans_array5))
+    if (equal(a5, a5 + 25, answa5))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array6, array6 + 42, ans_array6))
+    if (equal(a6, a6 + 30, answa6))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array7, array7 + 17, ans_array7))
+    if (equal(a7, a7 + 35, answa7))
     {
         marker++;
     }
-    else
-    {
-        marker = 0;
-    }
-
-    if (std::equal(array8, array8 + 8, ans_array8))
+    if (equal(a8, a8 + 40, answa8))
     {
         marker++;
     }
-    else
+    if (equal(a9, a9 + 45, answa9))
     {
-        marker = 0;
+        marker++;
+    }
+    if (equal(a10, a10 + 50, answa10))
+    {
+        marker++;
     }
 
-    if (marker == 8)
+    if (marker == 10)
     {
-        cout << "function works correctly";
+        cout << "working";
     }
     else
     {
-        cout << "something wrong " << marker;
+        cout << "umm not" << marker;
     }
 
     return 0;

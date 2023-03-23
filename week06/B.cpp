@@ -11,7 +11,7 @@ void swapst(string lf, string right)
     right = t;
 }
 
-void swap(itn lf, int right)
+void swap(int lf, int right)
 {
     int t;
     t = lf;
@@ -37,19 +37,24 @@ int main()
     }
     cin >> m;
     int t = 5;
-    while (t != 0)
+    for (int i = n; i > 0; i--)
     {
-        t = 0;
-        for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < i - 1; j++)
         {
-            if ((data[i + 1]).num < (data[i]).num)
+            if ((data[j]).num >= (data[j + 1]).num)
             {
-                swapst((data[i + 1]).name, (data[i]).name);
-                swap((data[i + 1]).num, (data[i]).num);
-                t++;
-            }
-            if ((data[i + 1]).num == (data[i]).num)
-            {
+                if ((data[j]).num == (data[j + 1]).num)
+                {
+                    if (((data[j]).name).compare((data[j]).name) > 0)
+                    {
+                        swapst((data[j]).name, (data[j]).name);
+                    }
+                }
+                else
+                {
+                    swap((data[j]).num, (data[j + 1]).num);
+                    swapst((data[j]).name, (data[j]).name);
+                }
             }
         }
     }

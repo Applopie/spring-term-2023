@@ -25,9 +25,26 @@ void push_back(Node *&head_ref, int new_key)
     {
         head_ref = new Node;
         head_ref->key = new_key;
+        return;
     }
-    Node *new_node = new Node;
-    new_node->key = new_key;
-    new_node->next = head_ref;
-    head_ref = new_node;
+    Node *el = head_ref;
+    while (el->next != nullptr)
+    {
+        el = el->next;
+    }
+    el->next = new Node;
+    el->next->key = new_key;
+    return;
+}
+
+void push_back(Node *&prev_ref, int new_key)
+{
+    if (prev_ref == nullptr)
+    {
+        return;
+    }
+    Node *el = prev_ref->next;
+    el->next = new Node;
+    el->next->key = new_key;
+    return;
 }

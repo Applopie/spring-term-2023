@@ -100,9 +100,80 @@ List *push_back(List *list_ptr, int new_key)
 
 List *insert_after(List *list_ptr, Node *prev_ptr, int new_key)
 {
-    if (list_ptr == nullptr)
+    if ((list_ptr == nullptr) or (prev_ptr == nullptr))
     {
         return nullptr;
     }
-    if
+    if ([prev_ptr == list_ptr->NIL])
+    {
+        return list_ptr;
+    }
+    Node *add = new Node;
+    if (prev_ptr == list_ptr->TAIL)
+    {
+        list_ptr->TAIL = add;
+    }
+    add->key = new_key;
+    add->next = prev_ptr->next;
+    add->prev = prev_ptr;
+    prev_ptr->next = add;
+    list_ptr->size++;
+    return list_ptr;
+}
+
+void print_list(const List *list_ptr)
+{
+    if (list_ptr == nullptr)
+    {
+        std::cout << '\n';
+        return;
+    }
+    if (list_ptr->HEAD == list_ptr->NIL)
+    {
+        std::cout << '\n';
+        return;
+    }
+    Node *uel = list_ptr->HEAD;
+    while (uel != list_ptr->NIL)
+    {
+        std::cout << uel->key << ' ';
+        uel = uel->next;
+    }
+    std::cout << std::endl;
+    return;
+}
+
+void remove_key(List *list_ptr, int key)
+{
+    if (list_ptr == nullptr)
+    {
+        return;
+    }
+    if (list_ptr->HEAD == list_ptr->NIL)
+    {
+        return;
+    }
+    if (list_ptr->HEAD->key == key)
+    {
+        if (list_ptr->HEAD->next == list_ptr->NIL)
+        {
+            delete list_ptr->HEAD;
+            list_ptr->HEAD = list_ptr->NIL;
+            list_ptr->TAIL = list_ptr->NIL;
+            return;
+        }
+        else
+        {
+            Node *newh = list_ptr->HEAD->next;
+            delete list_ptr->HEAD;
+            list_ptr->HEAD = newh;
+            list_ptr->HEAD->prev = list_ptr->NIL;
+            return;
+        }
+    }
+    Node *uel = list_ptr->HEAD;
+    while (uel != list_ptr->NIL)
+    {
+        if
+    }
 }

@@ -143,6 +143,81 @@ void print_list(const List *list_ptr)
     return;
 }
 
+void clear_list(List *list_ptr) void clear_list(List *list_ptr)
+{
+    if (list_ptr == nullptr)
+    {
+        return;
+    }
+    if (list_ptr->HEAD == list_ptr->NIL)
+    {
+        return;
+    }
+    Node *el = list_ptr->HEAD;
+    while (el->next != list_ptr->NIL)
+    {
+        Node *ex = el;
+        el = el->next;
+        delete ex;
+    }
+    delete el;
+    list_ptr->HEAD = list_ptr->NIL;
+    list_ptr->TAIL = list_ptr->NIL;
+    list_ptr->size = 0;
+    return;
+}
+
+void delete_list(List *list_ptr)
+{
+    if (list_ptr == nullptr)
+    {
+        return;
+    }
+    if (list_ptr->HEAD == list_ptr->NIL)
+    {
+        delete list_ptr->NIL;
+        delete list_ptr;
+        return;
+    }
+    Node *el = list_ptr->HEAD;
+    while (el->next != list_ptr->NIL)
+    {
+        Node *ex = el;
+        el = el->next;
+        delete ex;
+    }
+    delete el;
+    list_ptr->HEAD = list_ptr->NIL;
+    list_ptr->TAIL = list_ptr->NIL;
+    list_ptr->size = 0;
+    delete list_ptr->NIL;
+    delete list_ptr;
+    return;
+}
+
+Node *find_key(List *list_ptr, int key)
+{
+    if (list_ptr = nullptr)
+    {
+        return nullptr;
+    }
+    if (list_ptr->HEAD->key == key)
+    {
+        return list_ptr->HEAD;
+    }
+
+    Node *searched = list_ptr->HEAD->next;
+    while (searched != list_ptr->NIL)
+    {
+        if (searched->key == key)
+        {
+            return searched;
+        }
+        searched = searched->next;
+    }
+    return nullptr;
+}
+
 void remove_key(List *list_ptr, int key)
 {
     if (list_ptr == nullptr)
@@ -171,9 +246,29 @@ void remove_key(List *list_ptr, int key)
             return;
         }
     }
-    Node *uel = list_ptr->HEAD;
-    while (uel != list_ptr->NIL)
+
+    Node *uel = list_ptr->HEAD->next;
+    while (uel->next != list_ptr->NIL)
     {
-        if
+        if (uel->next->key == key)
+        {
+            if (uel->next->next != list_ptr->NIL)
+            {
+                Node *newn = uel->next->next;
+                uel->next->next->prev = uel;
+                delete uel->next;
+                uel->next = newn;
+                return;
+            }
+            else
+            {
+                delete uel->next;
+                uel->next = list_ptr->NIL;
+                list_ptr->TAIL = uel;
+                return;
+            }
+        }
+        uel = uel->next;
     }
+    return;
 }

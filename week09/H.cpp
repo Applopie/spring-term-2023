@@ -2,46 +2,47 @@
 
 using namespace std;
 
-int bsh(int a[], int end, int rn)
+int bsh(int a[], int end, int rn, int turns)
 {
-    int t = 0;
-    for (int i = 0; i < end - 1; i++)
+    int temp = 0, tempt = 0;
+    if (a[0] > rn)
+    {
+        a[1]++;
+        a[0]--;
+        temp = 1;
+    }
+    if (a[end - 1] > rn)
+    {
+        a[end - 2]++;
+        a[end - 1]--;
+    }
+    for (int i = 1; i < end - 1; i++)
     {
         if (a[i] > rn)
         {
-            a[i + 1] = a[i + 1] + a[i] - rn;
-            t = t + a[i] - rn;
-            a[i] = rn;
-        }
-        else if (a[i] < rn)
-        {
-            if (a[i + 1] > rn)
+            if (a[i + 1] >= rn and temp != 1)
             {
-                a[i] = a[i] + a[i + 1] - rn;
-                // t = t + a[i + 1] - rn;
-                a[i + 1] = rn;
+                a[i - 1]++;
+            }
+            else
+            {
+                a[i + 1]++;
             }
         }
     }
-    for (int i = end - 1; i > 0; i--)
+    for (int i = 0; i < end; i++)
     {
-        if (a[i] > rn)
+        if (a[i] != rn)
         {
-            a[i - 1] = a[i - 1] + a[i] - rn;
-            t = t + a[i] - rn;
-            a[i] = rn;
-        }
-        else if (a[i] < rn)
-        {
-            if (a[i - 1] > rn)
-            {
-                a[i] = a[i] + a[i - 1] - rn;
-                // t = t + a[i - 1] - rn;
-                a[i - 1] = rn;
-            }
+            tempt = 1;
         }
     }
-    return t;
+    turns++;
+    while (tempt == 1)
+    {
+        bsh(a, end, rn, turns);
+    }
+    return turns;
 }
 
 int main()
@@ -62,12 +63,28 @@ int main()
     else
     {
         int rnum = t / num;
-        int ans = bsh(a, num, rnum);
+        int ind = 0;
         for (int i = 0; i < num; i++)
         {
-            cout << a[i] << ' ';
+            if (a[i] != rnum)
+            {
+                ind = 1;
+            }
         }
-        cout << endl;
+        int ans = 0;
+        if (ind == 0)
+        {
+            ans = 0;
+        }
+        else
+        {
+            ans = bsh(a, num, rnum, 0);
+            for (int i = 0; i < num; i++)
+            {
+                cout << a[i] << ' ';
+            }
+            cout << endl;
+        }
         cout << ans << endl;
     }
     return 0;

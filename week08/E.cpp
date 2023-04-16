@@ -1,5 +1,6 @@
 #include <iostream>
 
+using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -67,15 +68,59 @@ void push_back(Node *&head_ref, char new_key)
 int main()
 {
     Node *head = nullptr;
+    Node *el = head;
+    int t = 0;
     char a = ' ';
     a = std::getchar();
+    if ((a == ')') || (a == ']') || (a == '}') || (a == '>')) {
+        t = 1;
+    }
     while ((a != '\n') || (a != '\0'))
     {
-        while
+        if ((a == '(') || (a == '[') || (a == '{') || (a == '<'))
+        {
             push_back(head, a);
+        }
+        if (a == ')') {
+            if ((head == nullptr)||(head->key != '(')) {
+                t = 1;
+                break;
+            }
+            head = head -> next;
+        }
+        if (a == ']') {
+            if ((head == nullptr) || (head->key != '[')) {
+                t = 1;
+                break;
+            }
+            head = head -> next;
+        }
+        if (a == '}')
+        {
+            if ((head == nullptr) || (head->key != '{'))
+            {
+                t = 1;
+                break;
+            }
+            head = head->next;
+        }
+        if (a == '>')
+        {
+            if ((head == nullptr) || (head->key != '<'))
+            {
+                t = 1;
+                break;
+            }
+            head = head->next;
+        }
         a = std::getchar();
     }
-
+    if (t == 1) {
+        cout << "NO" << endl;
+    }
+    if (t == 0) {
+        cout << "YES" << endl;
+    }
     destroy_list(head);
     return 0;
 }

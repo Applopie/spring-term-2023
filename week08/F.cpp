@@ -1,5 +1,6 @@
 #include <iostream>
 
+using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -46,7 +47,7 @@ void print_list(Node *&head_ref)
 }
 
 // Место для реализации функций
-void push_back(Node *&head_ref, string new_key)
+void push_back(Node *&head_ref, int new_key)
 {
     if (head_ref == nullptr)
     {
@@ -67,7 +68,7 @@ void push_back(Node *&head_ref, string new_key)
 Node *read_list(Node *head, int n)
 {
     string a = " ";
-    for (i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         cin >> a;
         push_back(head, a);
@@ -75,27 +76,99 @@ Node *read_list(Node *head, int n)
     return head;
 }
 
-int howlong(Node *head, int number, int count)
+int howlong(Node *head, int number, int count, int obj)
 {
-    int c = 0;
+    int c = 1;
+    int t = 0;
+    int hl = 0;
+    int ans = 0;
     Node *el = head;
-    while
+    while (t != 1) {
+        for (int i = 0; i < number-1; i++) {
+            if (c%count == 0) {
+                if (el->key != 0) {
+                    hl++;
+                    if (el->key == obj)
+                    {
+                        t = 1;
+                        ans = hl;
+                    }
+                    el->key = 0;
+                    c++;
+                    el = el->next;
+                }
+                else {
+                    el = el->next;
+                }
+            }
+            else {
+                if (el->key != 0) {
+                    c++;
+                    el = el->next;
+                }
+                else {
+                    el = el->next;
+                }
+            }
+        }
+        if (c % count == 0)
+        {
+            if (el->key != 0)
+            {
+                hl++;
+                if (el->key == obj)
+                {
+                    t = 1;
+                }
+                el->key = 0;
+                c++;
+                el = head;
+            }
+            else
+            {
+                el = head;
+            }
+        }
+        else
+        {
+            if (el->key != 0)
+            {
+                c++;
+                el = head;
+            }
+            else
+            {
+                el = head;
+            }
+        }
+    }
+    return ans;
 }
 
 int main()
 {
     int N = 0;
     cin >> N;
+    char a[N][100];
     Node *head = nullptr;
-    head = read_list(head, N);
+    for (int i = 0; i < N; i++) {
+        cin << a[i];
+        push_back (head, i+1);
+    }
 
     int k = 0;
     cin >> k;
 
-    string a = " ";
-    cin >> a;
+    int need = 0;
+    char b[100];
+    cin >> b;
+    for (int i = 0; i < N; i++) {
+        if (a[i] == a) {
+            need = i + 1;
+        }
+    }
 
-    std::cout << yon(head);
+    std::cout << howlong(head, N, k, need);
     destroy_list(head);
     return 0;
 }

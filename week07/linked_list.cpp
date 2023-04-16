@@ -5,7 +5,7 @@ using namespace std;
 struct Node
 {
     int key = 0;
-    Node *head;
+    Node *next;
 };
 
 void push_front(Node *&head_ref, int new_key)

@@ -2,47 +2,17 @@
 
 using namespace std;
 
-int bsh(int a[], int end, int rn, int turns)
+int hl(int a[], int size, int rinum)
 {
-    int temp = 0, tempt = 0;
-    if (a[0] > rn)
+    int ans = 0;
+    for (int i = 0; i < size; i++)
     {
-        a[1]++;
-        a[0]--;
-        temp = 1;
-    }
-    if (a[end - 1] > rn)
-    {
-        a[end - 2]++;
-        a[end - 1]--;
-    }
-    for (int i = 1; i < end - 1; i++)
-    {
-        if (a[i] > rn)
+        if (a[i] - rinum >= ans)
         {
-            if (a[i + 1] >= rn and temp != 1)
-            {
-                a[i - 1]++;
-            }
-            else
-            {
-                a[i + 1]++;
-            }
+            ans = a[i] - rinum;
         }
     }
-    for (int i = 0; i < end; i++)
-    {
-        if (a[i] != rn)
-        {
-            tempt = 1;
-        }
-    }
-    turns++;
-    while (tempt == 1)
-    {
-        bsh(a, end, rn, turns);
-    }
-    return turns;
+    return ans;
 }
 
 int main()
@@ -63,29 +33,7 @@ int main()
     else
     {
         int rnum = t / num;
-        int ind = 0;
-        for (int i = 0; i < num; i++)
-        {
-            if (a[i] != rnum)
-            {
-                ind = 1;
-            }
-        }
-        int ans = 0;
-        if (ind == 0)
-        {
-            ans = 0;
-        }
-        else
-        {
-            ans = bsh(a, num, rnum, 0);
-            for (int i = 0; i < num; i++)
-            {
-                cout << a[i] << ' ';
-            }
-            cout << endl;
-        }
-        cout << ans << endl;
+        cout << hl(a, num, rnum) << endl;
     }
     return 0;
 }

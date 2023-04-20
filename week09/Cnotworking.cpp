@@ -84,7 +84,7 @@ int main()
     Node *head = nullptr;
     int n = 0, m = 0;
     cin >> n >> m;
-    one(n, m, head);
+    head = one(n, m, head);
     print_list(head);
     destroy_list(head);
     return 0;

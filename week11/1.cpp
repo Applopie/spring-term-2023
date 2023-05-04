@@ -41,4 +41,5 @@ int main()
         sum = sum + seven_ten(b);
     }
     cout << ten_four(sum) << endl;
+    return 0;
 }

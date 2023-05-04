@@ -111,6 +111,7 @@ int main()
         auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0; --cnt)
         {
+            randomize(array, counter);
             shell2(array, counter, a[i], t);
         }
         auto end = std::chrono::steady_clock::now();

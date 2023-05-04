@@ -66,6 +66,7 @@ int main()
         auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0; --cnt)
         {
+            randomize(array, counter);
             te = sorting(array, counter);
         }
         auto end = std::chrono::steady_clock::now();

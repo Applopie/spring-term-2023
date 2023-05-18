@@ -24,5 +24,9 @@ int main()
     int *a1 = &a, *b1 = &b;
     swap2(a1, b1);
     cout << *a1 << ' ' << *b1 << endl;
+
+    int x = 1, y = 2;
+    swap(x, y);
+    cout << x << ' ' << y << endl;
     return 0;
 }

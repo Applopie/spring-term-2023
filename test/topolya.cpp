@@ -5,31 +5,32 @@
 
 using namespace std;
 
-void cube(int *a) // a или &a
+#include <iostream>
+
+class Base
 {
-    int t = *a * *a;
-    *a = t;
+
+public:
+    void hello() { std::cout << 1 << std::endl; }
+};
+
+class Derive : public B
+{
+
+public:
+    void hello() { std::cout << 2 << std::endl; }
+};
+
+void call(Base &b)
+{
+
+    b.hello();
 }
 
 int main()
 {
-    int i = 0;
-    int a = ++i;
-    cout << a << ' ' << i << endl;
-    i = 0;
-    int b = i++;
-    cout << b << ' ' << i << endl;
 
-    int x = 5;
-    int *x1 = &x;
-    cube(x1);
-    cout << x << endl;
+    Derive b;
 
-    // указатели. адреса переменных
-    double t = 9;
-    double *p = &t;
-    double *p1 = p;
-    p1 = p1 + 2;
-    cout << sizeof(p1 - p) << endl;
-    return 0;
+    call(b);
 }
